@@ -106,7 +106,7 @@ const L=[
  fact:"Көкпар требует силы, ловкости и слаженной командной работы.",q:"көкпар как играть",video:"https://www.youtube.com/embed/VVoC786LWTI"}];
 const $=id=>document.getElementById(id);
 let unlocked=0;
-unlocked=L.length; // все уроки открыты
+try{const q=new URLSearchParams(location.search);if(q.has('all'))localStorage.setItem('kzt-all','1');if(q.has('lock'))localStorage.removeItem('kzt-all');unlocked=localStorage.getItem('kzt-all')?L.length:Math.min(L.length,+localStorage.getItem('kzt-unlocked')||0)}catch(e){unlocked=0}
 
 // ---------- Урок ----------
 let resume=false;
